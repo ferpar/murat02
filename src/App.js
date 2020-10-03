@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./App.css";
-import { select, line } from "d3";
+import { select, line, curveCardinal } from "d3";
 
 const initialData = [25, 45, 30, 74, 38, 80, 160, 240, 200, 100];
 
@@ -11,7 +11,8 @@ function App() {
     const svg = select(svgRef.current);
     const myLine = line()
       .x( (value, idx) => idx * 50)
-      .y( value => value);
+      .y( value => 300 - value)
+      .curve(curveCardinal);
     // svg
     //   .selectAll("circle")
     //   .data(data)
